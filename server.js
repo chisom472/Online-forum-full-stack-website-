@@ -14,13 +14,13 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const rateLimit = require('express-rate-limit');
 
-const authRoutes = require('./routes/auth.routes');
-const postsRoutes = require('./routes/posts.routes');
-const commentsRoutes = require('./routes/comments.routes');
-const categoriesRoutes = require('./routes/categories.routes');
-const usersRoutes = require('./routes/users.routes');
-const downloadsRoutes = require('./routes/downloads.routes');
-const sitemapRoutes = require('./routes/sitemap.routes');
+const authRoutes = require('./auth.routes');
+const postsRoutes = require('./posts.routes');
+const commentsRoutes = require('./comments.routes');
+const categoriesRoutes = require('./categories.routes');
+const usersRoutes = require('./users.routes');
+const downloadsRoutes = require('./downloads.routes');
+const sitemapRoutes = require('./sitemap.routes');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
