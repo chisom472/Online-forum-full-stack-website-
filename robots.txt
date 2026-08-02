@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /create-post.html
+Disallow: /api/
+
+Sitemap: https://digitalenviro.com/sitemap.xml

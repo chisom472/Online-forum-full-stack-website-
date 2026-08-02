@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Enviro — Learn, Code, and Grow With Developers Worldwide</title>
+<meta name="description" content="Digital Enviro is a forum and blog for developers to learn and share ideas on coding, AI development, prompt engineering, web, mobile, and desktop development.">
+<meta name="keywords" content="coding forum, AI development, prompt engineering, web development community, mobile development, desktop development, developer blog">
+<link rel="canonical" href="https://digitalenviro.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Digital Enviro — Learn, Code, and Grow With Developers Worldwide">
+<meta property="og:description" content="A community forum and blog for coding, AI development, prompt engineering, and web, mobile & desktop development.">
+<meta property="og:image" content="https://digitalenviro.com/assets/logo-horizontal.png">
+<meta property="og:url" content="https://digitalenviro.com/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Digital Enviro",
+  "url": "https://digitalenviro.com",
+  "logo": "https://digitalenviro.com/assets/logo-horizontal.png",
+  "sameAs": []
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/icon-square.png" alt="Digital Enviro logo">
+      <span class="brand-word">DIGITAL <span>ENVIRO</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="downloads.html">Download Apps</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-actions" id="nav-auth-slot"></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">🌱 technology. innovation. sustainability.</span>
+      <h1>Where developers learn, build, and grow together.</h1>
+      <p class="lede">Join the forum and blog for coding, AI development, prompt engineering, and web, mobile & desktop development — questions answered, ideas shared, projects shipped.</p>
+      <div class="hero-ctas">
+        <a href="forum.html" class="btn btn-primary">Explore the forum</a>
+        <a href="register.html" class="btn btn-outline-light">Create free account</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b id="stat-threads">—</b><span>Discussions started</span></div>
+        <div class="stat"><b id="stat-articles">—</b><span>Articles published</span></div>
+        <div class="stat"><b id="stat-categories">6</b><span>Core topics</span></div>
+      </div>
+    </div>
+    <div class="code-card" aria-hidden="true">
+      <div class="code-card-head">
+        <span class="code-dot" style="background:#e0605a;"></span>
+        <span class="code-dot" style="background:#d99a3d;"></span>
+        <span class="code-dot" style="background:#4fd47c;"></span>
+      </div>
+      <pre><span class="tok-cm">// every thread plants something new</span>
+<span class="tok-kw">function</span> <span class="tok-fn">grow</span>(idea) {
+  <span class="tok-kw">const</span> discussion = community.<span class="tok-fn">discuss</span>(idea);
+  <span class="tok-kw">const</span> feedback   = peers.<span class="tok-fn">review</span>(discussion);
+  <span class="tok-kw">return</span> ship(idea, feedback);
+}
+
+<span class="tok-fn">grow</span>(<span class="tok-str">"your next project"</span>);
+<span class="tok-cm">// → merged, learned, shared</span></pre>
+    </div>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="section-head">
+    <div>
+      <h2>Pick a topic to dig into</h2>
+      <p>Every category holds both live discussion and long-form articles.</p>
+    </div>
+    <a href="forum.html" class="btn btn-outline">View all categories</a>
+  </div>
+  <div class="cat-grid" id="category-grid">
+    <div class="skeleton" style="height:140px;"></div>
+    <div class="skeleton" style="height:140px;"></div>
+    <div class="skeleton" style="height:140px;"></div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="vine"><span class="vine-leaf">🌿</span><span class="vine-label">Fresh from the forum</span><span></span></div>
+</div>
+
+<section class="section container" style="padding-top:0;">
+  <div class="section-head">
+    <h2 style="font-size:1.4rem;">Latest discussions</h2>
+    <a href="forum.html" class="btn btn-outline btn-sm">Go to forum</a>
+  </div>
+  <div class="post-list" id="latest-forum-list">
+    <div class="skeleton" style="height:90px;"></div>
+    <div class="skeleton" style="height:90px;"></div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="vine"><span class="vine-leaf">📝</span><span class="vine-label">From the blog</span><span></span></div>
+</div>
+
+<section class="section container" style="padding-top:0;">
+  <div class="section-head">
+    <h2 style="font-size:1.4rem;">Latest articles</h2>
+    <a href="blog.html" class="btn btn-outline btn-sm">Go to blog</a>
+  </div>
+  <div class="post-grid" id="latest-blog-list">
+    <div class="skeleton" style="height:220px;"></div>
+    <div class="skeleton" style="height:220px;"></div>
+    <div class="skeleton" style="height:220px;"></div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--navy-ink); color:#fff;">
+  <div class="container" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;">
+    <div>
+      <h2 style="color:#fff;">Take Digital Enviro with you</h2>
+      <p style="color:rgba(255,255,255,0.7); max-width: 48ch;">Get the desktop and mobile apps — built for the same forum and blog, with notifications for replies and an offline reading list. Downloadable only from this site.</p>
+    </div>
+    <a href="downloads.html" class="btn btn-primary">Download the apps</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:14px;">
+        <img src="assets/icon-square.png" alt="Digital Enviro logo" style="height:32px;">
+        <span class="brand-word" style="color:#fff;">DIGITAL <span>ENVIRO</span></span>
+      </div>
+      <p style="color:rgba(255,255,255,0.6); max-width: 34ch; font-size:0.88rem;">A community for developers to learn, build, and grow — coding, AI, prompt engineering, and web, mobile & desktop development.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="forum.html">Forum</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="downloads.html">Apps</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Topics</h4>
+      <ul>
+        <li><a href="forum.html?category=ai-development">AI Development</a></li>
+        <li><a href="forum.html?category=prompt-engineering">Prompt Engineering</a></li>
+        <li><a href="forum.html?category=web-development">Web Development</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="register.html">Join</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>&copy; 2026 Digital Enviro. Technology. Innovation. Sustainability.</span>
+    <span>Built with Node.js, Express &amp; SQLite.</span>
+  </div>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

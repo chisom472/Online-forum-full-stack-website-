@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forum — Digital Enviro</title>
+<meta name="description" content="Ask questions and share ideas on coding, AI development, prompt engineering, web, mobile, and desktop development with the Digital Enviro community.">
+<link rel="canonical" href="https://digitalenviro.com/forum.html">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/icon-square.png" alt="Digital Enviro logo">
+      <span class="brand-word">DIGITAL <span>ENVIRO</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="downloads.html">Download Apps</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-actions" id="nav-auth-slot"></div>
+  </div>
+</header>
+
+<section class="section container" style="padding-bottom:24px;">
+  <div class="section-head">
+    <div>
+      <h1 style="font-size:1.9rem;">Forum</h1>
+      <p>Ask a question, share a build, or help someone debug theirs.</p>
+    </div>
+    <a href="create-post.html?type=forum" class="btn btn-primary">Start a discussion</a>
+  </div>
+
+  <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:8px;">
+    <input type="search" id="search-input" placeholder="Search discussions…" style="flex:1; min-width:220px; padding:11px 14px; border:1px solid var(--line); border-radius:8px; font-family:var(--font-body);">
+    <select id="sort-select" style="padding:11px 14px; border:1px solid var(--line); border-radius:8px;">
+      <option value="latest">Latest activity</option>
+      <option value="popular">Most viewed</option>
+      <option value="top">Most liked</option>
+    </select>
+  </div>
+</section>
+
+<section class="container">
+  <div class="layout-with-sidebar">
+    <aside>
+      <div class="sidebar-card">
+        <h4>Categories</h4>
+        <div id="sidebar-categories">
+          <div class="skeleton" style="height:20px; margin-bottom:8px;"></div>
+          <div class="skeleton" style="height:20px; margin-bottom:8px;"></div>
+          <div class="skeleton" style="height:20px;"></div>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h4>New here?</h4>
+        <p style="font-size:0.85rem; margin-bottom:14px;">Create a free account to start discussions, reply, and react to posts.</p>
+        <a href="register.html" class="btn btn-primary btn-sm" style="width:100%;">Join free</a>
+      </div>
+    </aside>
+
+    <main>
+      <div class="post-list" id="thread-list">
+        <div class="skeleton" style="height:100px;"></div>
+        <div class="skeleton" style="height:100px;"></div>
+        <div class="skeleton" style="height:100px;"></div>
+      </div>
+      <div class="pagination" id="pagination"></div>
+    </main>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:14px;">
+        <img src="assets/icon-square.png" alt="Digital Enviro logo" style="height:32px;">
+        <span class="brand-word" style="color:#fff;">DIGITAL <span>ENVIRO</span></span>
+      </div>
+      <p style="color:rgba(255,255,255,0.6); max-width: 34ch; font-size:0.88rem;">A community for developers to learn, build, and grow.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul><li><a href="forum.html">Forum</a></li><li><a href="blog.html">Blog</a></li><li><a href="downloads.html">Apps</a></li></ul>
+    </div>
+    <div>
+      <h4>Topics</h4>
+      <ul><li><a href="forum.html?category=ai-development">AI Development</a></li><li><a href="forum.html?category=prompt-engineering">Prompt Engineering</a></li></ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul><li><a href="about.html">About</a></li><li><a href="register.html">Join</a></li></ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>&copy; 2026 Digital Enviro.</span>
+    <span>Built with Node.js, Express &amp; SQLite.</span>
+  </div>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/forum.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log In — Digital Enviro</title>
+<meta name="description" content="Log in to your Digital Enviro account to post, reply, and react across the forum and blog.">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/icon-square.png" alt="Digital Enviro logo">
+      <span class="brand-word">DIGITAL <span>ENVIRO</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="downloads.html">Download Apps</a></li>
+    </ul>
+    <div class="nav-actions" id="nav-auth-slot"></div>
+  </div>
+</header>
+
+<section class="section container">
+  <div class="form-card">
+    <div style="text-align:center; margin-bottom:24px;">
+      <img src="assets/icon-square.png" alt="" style="height:48px; margin:0 auto 12px;">
+      <h1 style="font-size:1.5rem;">Welcome back</h1>
+      <p style="font-size:0.9rem;">Log in to continue the conversation.</p>
+    </div>
+
+    <div class="form-error" id="form-error"></div>
+
+    <form id="login-form">
+      <div class="field">
+        <label for="emailOrUsername">Email or username</label>
+        <input type="text" id="emailOrUsername" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;" id="submit-btn">Log in</button>
+    </form>
+
+    <p style="text-align:center; font-size:0.88rem; margin-top:20px;">
+      New to Digital Enviro? <a href="register.html" style="color:var(--leaf-deep); font-weight:600;">Create an account</a>
+    </p>
+  </div>
+</section>
+
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

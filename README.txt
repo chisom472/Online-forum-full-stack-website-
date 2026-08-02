@@ -1,0 +1,1 @@
+Built desktop/mobile installers (.exe, .dmg, .AppImage, .apk) get copied into this folder so downloads.html can serve them directly. See desktop-app/README.md and mobile-app/README.md for build steps.

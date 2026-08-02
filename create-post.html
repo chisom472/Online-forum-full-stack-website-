@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Post — Digital Enviro</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/icon-square.png" alt="Digital Enviro logo">
+      <span class="brand-word">DIGITAL <span>ENVIRO</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="downloads.html">Download Apps</a></li>
+    </ul>
+    <div class="nav-actions" id="nav-auth-slot"></div>
+  </div>
+</header>
+
+<section class="section container">
+  <div class="form-card wide">
+    <h1 id="form-heading" style="font-size:1.5rem; margin-bottom:22px;">Create a post</h1>
+
+    <div class="type-toggle" id="type-toggle">
+      <button type="button" data-type="forum" class="active">💬 Forum discussion</button>
+      <button type="button" data-type="blog">📝 Blog article</button>
+    </div>
+
+    <div class="form-error" id="form-error"></div>
+    <div class="form-success" id="form-success"></div>
+
+    <form id="post-form">
+      <div class="field">
+        <label for="title">Title</label>
+        <input type="text" id="title" required placeholder="Give it a clear, specific title">
+      </div>
+
+      <div class="field">
+        <label for="category_id">Category</label>
+        <select id="category_id" required>
+          <option value="">Loading categories…</option>
+        </select>
+      </div>
+
+      <div class="field" id="cover-field" style="display:none;">
+        <label for="cover_image">Cover image URL (optional)</label>
+        <input type="url" id="cover_image" placeholder="https://…">
+      </div>
+
+      <div class="field">
+        <label for="excerpt">Short summary (optional)</label>
+        <input type="text" id="excerpt" placeholder="One or two sentences — shown in listings and search results">
+      </div>
+
+      <div class="field">
+        <label for="content">Content</label>
+        <textarea id="content" required placeholder="Write in HTML or plain text. Use <p>, <h2>, <pre> for formatting." style="min-height:260px;"></textarea>
+        <div class="field-hint">Basic HTML tags are supported: &lt;p&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;pre&gt;, &lt;code&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;ul&gt;/&lt;li&gt;, &lt;a&gt;.</div>
+      </div>
+
+      <div class="field">
+        <label for="tags">Tags (comma separated)</label>
+        <input type="text" id="tags" placeholder="e.g. react, performance, hooks">
+      </div>
+
+      <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%;">Publish</button>
+    </form>
+  </div>
+</section>
+
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/create-post.js"></script>
+</body>
+</html>

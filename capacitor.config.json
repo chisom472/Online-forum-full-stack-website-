@@ -1,0 +1,29 @@
+{
+  "appId": "com.digitalenviro.mobile",
+  "appName": "Digital Enviro",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "url": "https://digitalenviro.com",
+    "cleartext": false,
+    "allowNavigation": ["digitalenviro.com", "*.digitalenviro.com"]
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1200,
+      "backgroundColor": "#0b1826",
+      "androidScaleType": "CENTER_CROP",
+      "splashFullScreen": true,
+      "splashImmersive": true
+    },
+    "PushNotifications": {
+      "presentationOptions": ["badge", "sound", "alert"]
+    }
+  },
+  "android": {
+    "icon": "icons/icon-512.png"
+  },
+  "ios": {
+    "icon": "icons/icon-1024.png"
+  }
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account — Digital Enviro</title>
+<meta name="description" content="Join Digital Enviro free to start discussions, publish articles, and connect with other developers.">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/icon-square.png" alt="Digital Enviro logo">
+      <span class="brand-word">DIGITAL <span>ENVIRO</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="downloads.html">Download Apps</a></li>
+    </ul>
+    <div class="nav-actions" id="nav-auth-slot"></div>
+  </div>
+</header>
+
+<section class="section container">
+  <div class="form-card">
+    <div style="text-align:center; margin-bottom:24px;">
+      <img src="assets/icon-square.png" alt="" style="height:48px; margin:0 auto 12px;">
+      <h1 style="font-size:1.5rem;">Join the community</h1>
+      <p style="font-size:0.9rem;">Free forever. Start posting in under a minute.</p>
+    </div>
+
+    <div class="form-error" id="form-error"></div>
+
+    <form id="register-form">
+      <div class="field">
+        <label for="display_name">Display name</label>
+        <input type="text" id="display_name" required placeholder="e.g. Ada Rivers">
+      </div>
+      <div class="field">
+        <label for="username">Username</label>
+        <input type="text" id="username" required placeholder="e.g. ada_codes">
+        <div class="field-hint">3–20 characters: letters, numbers, and underscores only.</div>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" required autocomplete="new-password">
+        <div class="field-hint">At least 8 characters.</div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;" id="submit-btn">Create account</button>
+    </form>
+
+    <p style="text-align:center; font-size:0.88rem; margin-top:20px;">
+      Already have an account? <a href="login.html" style="color:var(--leaf-deep); font-weight:600;">Log in</a>
+    </p>
+  </div>
+</section>
+
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

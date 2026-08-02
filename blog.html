@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Digital Enviro</title>
+<meta name="description" content="In-depth articles on coding, AI development, prompt engineering, and web, mobile, and desktop development from the Digital Enviro community.">
+<link rel="canonical" href="https://digitalenviro.com/blog.html">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/icon-square.png" alt="Digital Enviro logo">
+      <span class="brand-word">DIGITAL <span>ENVIRO</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="downloads.html">Download Apps</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-actions" id="nav-auth-slot"></div>
+  </div>
+</header>
+
+<section class="section container" style="padding-bottom:24px;">
+  <div class="section-head">
+    <div>
+      <h1 style="font-size:1.9rem;">Blog</h1>
+      <p>Long-form articles and tutorials from the community.</p>
+    </div>
+    <a href="create-post.html?type=blog" class="btn btn-primary">Write an article</a>
+  </div>
+
+  <div style="display:flex; gap:12px; flex-wrap:wrap;">
+    <input type="search" id="search-input" placeholder="Search articles…" style="flex:1; min-width:220px; padding:11px 14px; border:1px solid var(--line); border-radius:8px; font-family:var(--font-body);">
+    <select id="category-select" style="padding:11px 14px; border:1px solid var(--line); border-radius:8px;">
+      <option value="">All categories</option>
+    </select>
+  </div>
+</section>
+
+<section class="section container" style="padding-top:0;">
+  <div class="post-grid" id="article-grid">
+    <div class="skeleton" style="height:220px;"></div>
+    <div class="skeleton" style="height:220px;"></div>
+    <div class="skeleton" style="height:220px;"></div>
+  </div>
+  <div class="pagination" id="pagination"></div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:14px;">
+        <img src="assets/icon-square.png" alt="Digital Enviro logo" style="height:32px;">
+        <span class="brand-word" style="color:#fff;">DIGITAL <span>ENVIRO</span></span>
+      </div>
+      <p style="color:rgba(255,255,255,0.6); max-width: 34ch; font-size:0.88rem;">A community for developers to learn, build, and grow.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul><li><a href="forum.html">Forum</a></li><li><a href="blog.html">Blog</a></li><li><a href="downloads.html">Apps</a></li></ul>
+    </div>
+    <div>
+      <h4>Topics</h4>
+      <ul><li><a href="blog.html?category=ai-development">AI Development</a></li><li><a href="blog.html?category=web-development">Web Development</a></li></ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul><li><a href="about.html">About</a></li><li><a href="register.html">Join</a></li></ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>&copy; 2026 Digital Enviro.</span>
+    <span>Built with Node.js, Express &amp; SQLite.</span>
+  </div>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/blog.js"></script>
+</body>
+</html>

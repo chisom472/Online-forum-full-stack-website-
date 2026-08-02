@@ -1,0 +1,14 @@
+node_modules/
+.env
+server/db/*.sqlite
+server/db/*.sqlite-journal
+server/db/*.sqlite-wal
+server/db/*.sqlite-shm
+desktop-app/node_modules/
+desktop-app/dist/
+mobile-app/node_modules/
+mobile-app/android/
+mobile-app/ios/
+public/downloads/*
+!public/downloads/.gitkeep
+.DS_Store
