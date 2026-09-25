@@ -7,8 +7,8 @@
 
 const express = require('express');
 const slugify = require('slugify');
-const db = require('../db/database');
-const { requireAuth, attachUserIfPresent } = require('../middleware/auth.middleware');
+const db = require('./database');
+const { requireAuth, attachUserIfPresent } = require('./auth.middleware');
 
 const router = express.Router();
 
