@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const rateLimit = require('express-rate-limit');
 const db = require('./database');
-const { requireAuth } = require('./middleware/auth.middleware');
+const { requireAuth } = require('./auth.middleware');
 const router = express.Router();
 
 // Slow down brute-force attempts on auth endpoints specifically
