@@ -6,8 +6,8 @@
  */
 
 const express = require('express');
-const db = require('../db/database');
-const { requireAuth } = require('../middleware/auth.middleware');
+const db = require('./database');
+const { requireAuth } = require('./auth.middleware');
 
 const router = express.Router();
 
