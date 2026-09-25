@@ -3,6 +3,7 @@
  * Registration, login, and "who am I" endpoints.
  */
 
+const crypto = require('crypto');
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -94,6 +95,62 @@ router.put('/me', requireAuth, (req, res) => {
     .run(display_name, bio, avatar_url, req.user.id);
   const user = db.prepare('SELECT * FROM users WHERE id = ?').get(req.user.id);
   res.json({ user: publicUser(user) });
+});
+// POST /api/auth/forgot-password
+router.post('/forgot-password', authLimiter, (req, res) => {
+  const { email } = req.body;
+  if (!email) {
+    return res.status(400).json({ error: 'Please enter your email address.' });
+  }
+
+  const user = db.prepare('SELECT * FROM users WHERE email = ?').get(email.toLowerCase());
+
+  // Always respond the same way whether or not the email exists - this stops
+  // someone from using this endpoint to check which emails are registered.
+  if (user) {
+    const rawToken = crypto.randomBytes(32).toString('hex');
+    const tokenHash = crypto.createHash('sha256').update(rawToken).digest('hex');
+    const expires = new Date(Date.now() + 60 * 60 * 1000).toISOString(); // valid 1 hour
+
+    db.prepare('UPDATE users SET reset_token_hash = ?, reset_token_expires = ? WHERE id = ?')
+      .run(tokenHash, expires, user.id);
+
+    const resetUrl = `${(process.env.SITE_URL || '').replace(/\/$/, '')}/reset-password.html?token=${rawToken}`;
+
+    // TODO: replace this console.log with a real email send (nodemailer + SMTP,
+    // or a transactional email API like Resend/SendGrid) before opening
+    // registration to the public. For now the link is only visible in the
+    // server logs.
+    console.log(`[password reset] ${user.email} -> ${resetUrl}`);
+  }
+
+  res.json({ message: 'If that email is registered, a password reset link has been sent.' });
+});
+
+// POST /api/auth/reset-password
+router.post('/reset-password', authLimiter, (req, res) => {
+  const { token, password } = req.body;
+  if (!token || !password) {
+    return res.status(400).json({ error: 'Missing reset token or new password.' });
+  }
+  if (password.length < 8) {
+    return res.status(400).json({ error: 'Password must be at least 8 characters long.' });
+  }
+
+  const tokenHash = crypto.createHash('sha256').update(token).digest('hex');
+  const user = db
+    .prepare('SELECT * FROM users WHERE reset_token_hash = ? AND reset_token_expires > ?')
+    .get(tokenHash, new Date().toISOString());
+
+  if (!user) {
+    return res.status(400).json({ error: 'This reset link is invalid or has expired. Please request a new one.' });
+  }
+
+  const password_hash = bcrypt.hashSync(password, 10);
+  db.prepare('UPDATE users SET password_hash = ?, reset_token_hash = NULL, reset_token_expires = NULL WHERE id = ?')
+    .run(password_hash, user.id);
+
+  res.json({ message: 'Your password has been reset. You can now log in.' });
 });
 
 module.exports = router;
