@@ -68,7 +68,7 @@ app.use('/api', commentsRoutes); // exposes /api/posts/:id/comments and /api/com
 // ---------------------------------------------------------------------------
 // Static frontend
 // ---------------------------------------------------------------------------
-app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static(path.join(__dirname)));
 
 // Fallback 404 for unmatched API routes
 app.use('/api', (req, res) => {
@@ -78,7 +78,7 @@ app.use('/api', (req, res) => {
 // Anything else not matched by a static file falls back to the homepage
 // so client-side query-param routing (e.g. thread.html?slug=...) still works
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // ---------------------------------------------------------------------------
