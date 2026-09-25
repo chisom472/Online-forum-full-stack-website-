@@ -25,6 +25,14 @@ db.pragma('foreign_keys = ON');
 // Schema
 // ---------------------------------------------------------------------------
 db.exec(`
+// --- Migration: add password-reset columns if they don't already exist ---
+const userColumns = db.prepare("PRAGMA table_info(users)").all().map((c) => c.name);
+if (!userColumns.includes('reset_token_hash')) {
+  db.exec('ALTER TABLE users ADD COLUMN reset_token_hash TEXT');
+}
+if (!userColumns.includes('reset_token_expires')) {
+  db.exec('ALTER TABLE users ADD COLUMN reset_token_expires TEXT');
+}
 CREATE TABLE IF NOT EXISTS users (
   id            INTEGER PRIMARY KEY AUTOINCREMENT,
   username      TEXT NOT NULL UNIQUE,
