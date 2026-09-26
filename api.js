@@ -62,7 +62,9 @@ const Api = {
   login: (payload) => apiRequest('/auth/login', { method: 'POST', body: payload, auth: false }),
   me: () => apiRequest('/auth/me'),
   updateMe: (payload) => apiRequest('/auth/me', { method: 'PUT', body: payload }),
-
+  forgotPassword: (payload) => apiRequest('/auth/forgot-password', { method: 'POST', body: payload, auth: false }),
+  resetPassword: (payload) => apiRequest('/auth/reset-password', { method: 'POST', body: payload, auth: false }),
+  
   getCategories: () => apiRequest('/categories', { auth: false }),
   getCategory: (slug) => apiRequest(`/categories/${slug}`, { auth: false }),
 
