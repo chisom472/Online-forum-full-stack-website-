@@ -12,6 +12,54 @@ const db = require('./database');
 const { requireAuth } = require('./auth.middleware');
 const router = express.Router();
 
+/**
+ * Sends a password-reset email via the Resend API (https://resend.com).
+ * Uses Node's built-in fetch - no extra npm dependency required.
+ *
+ * If RESEND_API_KEY isn't set, falls back to logging the link to the server
+ * console instead of failing outright - handy for local development before
+ * you've set up an email account at all.
+ */
+async function sendPasswordResetEmail(toEmail, resetUrl) {
+  if (!process.env.RESEND_API_KEY) {
+    console.log(`[password reset] (no RESEND_API_KEY set) ${toEmail} -> ${resetUrl}`);
+    return;
+  }
+
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: process.env.EMAIL_FROM || 'Digital Enviro <onboarding@resend.dev>',
+        to: toEmail,
+        subject: 'Reset your Digital Enviro password',
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto; color:#14212b;">
+            <h2 style="color:#0b1826;">Reset your password</h2>
+            <p>We received a request to reset the password for your Digital Enviro account.</p>
+            <p style="margin: 28px 0;">
+              <a href="${resetUrl}" style="background:#2fae60; color:#fff; padding:12px 22px; border-radius:8px; text-decoration:none; font-weight:600; display:inline-block;">
+                Reset your password
+              </a>
+            </p>
+            <p style="color:#4d6270; font-size:0.85rem;">This link expires in 1 hour. If you didn't request this, you can safely ignore this email — your password won't change.</p>
+          </div>
+        `,
+      }),
+    });
+
+    if (!response.ok) {
+      const errBody = await response.text();
+      console.error('[password reset] Resend API error:', response.status, errBody);
+    }
+  } catch (err) {
+    console.error('[password reset] Failed to send email:', err.message);
+  }
+}
 // Slow down brute-force attempts on auth endpoints specifically
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -97,7 +145,7 @@ router.put('/me', requireAuth, (req, res) => {
   res.json({ user: publicUser(user) });
 });
 // POST /api/auth/forgot-password
-router.post('/forgot-password', authLimiter, (req, res) => {
+router.post('/forgot-password', authLimiter, async (req, res) => {
   const { email } = req.body;
   if (!email) {
     return res.status(400).json({ error: 'Please enter your email address.' });
