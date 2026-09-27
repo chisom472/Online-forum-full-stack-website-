@@ -25,14 +25,6 @@ db.pragma('foreign_keys = ON');
 // Schema
 // ---------------------------------------------------------------------------
 db.exec(`
-// --- Migration: add password-reset columns if they don't already exist ---
-const userColumns = db.prepare("PRAGMA table_info(users)").all().map((c) => c.name);
-if (!userColumns.includes('reset_token_hash')) {
-  db.exec('ALTER TABLE users ADD COLUMN reset_token_hash TEXT');
-}
-if (!userColumns.includes('reset_token_expires')) {
-  db.exec('ALTER TABLE users ADD COLUMN reset_token_expires TEXT');
-}
 CREATE TABLE IF NOT EXISTS users (
   id            INTEGER PRIMARY KEY AUTOINCREMENT,
   username      TEXT NOT NULL UNIQUE,
@@ -108,6 +100,14 @@ CREATE INDEX IF NOT EXISTS idx_posts_type ON posts(type);
 CREATE INDEX IF NOT EXISTS idx_posts_user ON posts(user_id);
 CREATE INDEX IF NOT EXISTS idx_comments_post ON comments(post_id);
 `);
+// --- Migration: add password-reset columns if they don't already exist ---
+const userColumns = db.prepare("PRAGMA table_info(users)").all().map((c) => c.name);
+if (!userColumns.includes('reset_token_hash')) {
+  db.exec('ALTER TABLE users ADD COLUMN reset_token_hash TEXT');
+}
+if (!userColumns.includes('reset_token_expires')) {
+  db.exec('ALTER TABLE users ADD COLUMN reset_token_expires TEXT');
+}
 
 // ---------------------------------------------------------------------------
 // Seed default categories if the table is empty
