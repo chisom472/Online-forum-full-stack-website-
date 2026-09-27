@@ -121,7 +121,7 @@ router.post('/forgot-password', authLimiter, (req, res) => {
     // or a transactional email API like Resend/SendGrid) before opening
     // registration to the public. For now the link is only visible in the
     // server logs.
-    console.log(`[password reset] ${user.email} -> ${resetUrl}`);
+    await sendPasswordResetEmail(user.email, resetUrl);
   }
 
   res.json({ message: 'If that email is registered, a password reset link has been sent.' });
