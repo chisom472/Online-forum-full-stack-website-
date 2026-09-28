@@ -5,6 +5,7 @@
 
 const express = require('express');
 const db = require('./database');
+const { requireAuth } = require('./auth.middleware');
 
 const router = express.Router();
 
@@ -35,6 +36,26 @@ router.get('/:username', (req, res) => {
     .get(user.id, user.id, user.id);
 
   res.json({ user, posts, stats });
+});
+// GET /api/users/admin/stats - only for emails listed in ADMIN_EMAILS
+router.get('/admin/stats', requireAuth, (req, res) => {
+  const admins = (process.env.ADMIN_EMAILS || '')
+    .split(',')
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean);
+  const me = db.prepare('SELECT email FROM users WHERE id = ?').get(req.user.id);
+
+  if (!me || !admins.includes(me.email.toLowerCase())) {
+    return res.status(403).json({ error: 'Not authorized.' });
+  }
+
+  const stats = db
+    .prepare(`SELECT
+      (SELECT COUNT(*) FROM users) AS users,
+      (SELECT COUNT(*) FROM posts) AS posts,
+      (SELECT COUNT(*) FROM comments) AS comments`)
+    .get();
+  res.json(stats);
 });
 
 module.exports = router;
